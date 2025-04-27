@@ -2,6 +2,7 @@ import 'package:ereportapp/utils/routes.dart';
 import 'package:ereportapp/utils/themes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 // import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -28,11 +29,21 @@ void initializeRoutes() {
   );
 }
 
+void initializeWebView() async {
+  if (!kIsWeb &&
+      kDebugMode &&
+      defaultTargetPlatform == TargetPlatform.android) {
+    await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
+  }
+}
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   if(kIsWeb){
     // setUrlStrategy(PathUrlStrategy());
   }
+
+  initializeWebView();
   initializeRoutes();
   runApp(const MyApp());
 }
