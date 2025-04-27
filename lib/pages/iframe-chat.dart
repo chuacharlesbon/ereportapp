@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:ereportapp/utils/constants/urls.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -48,7 +49,7 @@ class _IFrameChatScreenState extends State<IFrameChatScreen> {
         size: MediaQuery.of(context).size,
         child: InAppWebView(
           key: webViewKey,
-          initialUrlRequest: URLRequest(url: WebUri("https://ereportapp.vercel.app/#/home/mobile-chat")),
+          initialUrlRequest: URLRequest(url: WebUri(AppUrls.vercelIFrameChat)),
           initialSettings: InAppWebViewSettings(
               transparentBackground: true,
               safeBrowsingEnabled: true,
