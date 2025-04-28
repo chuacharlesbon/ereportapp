@@ -1,5 +1,7 @@
+import 'package:ereportapp/firebase_options.dart';
 import 'package:ereportapp/utils/routes.dart';
 import 'package:ereportapp/utils/themes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -37,12 +39,19 @@ void initializeWebView() async {
   }
 }
 
-void main() {
+Future<void> initializeFirebase() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,  // Use the generated options
+  );
+}
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if(kIsWeb){
     // setUrlStrategy(PathUrlStrategy());
   }
 
+  initializeFirebase();
   initializeWebView();
   initializeRoutes();
   runApp(const MyApp());

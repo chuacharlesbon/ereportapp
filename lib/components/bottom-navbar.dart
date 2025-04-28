@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:ereportapp/utils/firebase.dart';
 import 'package:ereportapp/utils/helpers.dart';
 import 'package:ereportapp/utils/routes.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         children: [
           GestureDetector(
             onTap: () {
+              logEvent(eventName: "Home");
               goTo(ctx: context, pathname: RouteNames.home.name);
             },
             child: Icon(
@@ -59,6 +61,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           GestureDetector(
             onTap: () {
+              logEvent(eventName: "Chat");
               goTo(ctx: context, pathname: RouteNames.iframeChat.name);
             },
             child: const Icon(
@@ -67,7 +70,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           GestureDetector(
             onTap: () {
-      
+              logEvent(eventName: "Settings");
             },
             child: const Icon(
               Icons.settings
