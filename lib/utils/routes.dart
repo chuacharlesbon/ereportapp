@@ -2,6 +2,7 @@ import 'package:ereportapp/pages/home.dart';
 import 'package:ereportapp/pages/iframe-chat.dart';
 import 'package:ereportapp/pages/mobile-chat.dart';
 import 'package:ereportapp/pages/splash.dart';
+import 'package:ereportapp/pages/test.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -49,6 +50,16 @@ class MyRoutes {
         child: Scaffold(body: ChatScreen()),
       ),
     ),
+    /////////////////////////////////
+    /// TEST ROUTE                ///
+    /////////////////////////////////
+    GoRoute(
+      path: RouteNames.test.path,
+      name: RouteNames.test.name,
+      builder: (context, state) => const SafeArea(
+        child: Scaffold(body: TestScreen()),
+      ),
+    ),
   ];
 }
 
@@ -87,5 +98,12 @@ class RouteNames {
   static MyRouteModel iframeChat = MyRouteModel(
     name: "iframe-chat",
     path: "/iframe-chat",
+  );
+  /////////////////////////////////
+  /// TEST ROUTE                ///
+  /////////////////////////////////
+  static MyRouteModel test = MyRouteModel(
+    name: "test",
+    path: "/test",
   );
 }
