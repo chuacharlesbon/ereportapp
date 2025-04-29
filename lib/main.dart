@@ -1,10 +1,12 @@
+import 'package:ereportapp/data/app-cubit/app-cubit.dart';
 import 'package:ereportapp/firebase_options.dart';
 import 'package:ereportapp/utils/routes.dart';
 import 'package:ereportapp/utils/themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart' hide AndroidOptions;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 // import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -45,8 +47,16 @@ Future<void> initializeFirebase() async {
   );
 }
 
+void initializeData() {
+  serviceLocator.registerLazySingleton<FlutterSecureStorage>(() => const FlutterSecureStorage(
+    aOptions: AndroidOptions(encryptedSharedPreferences: true)
+  ));
+  serviceLocator.registerLazySingleton<AppCubit>(() => AppCubit());
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   if(kIsWeb){
     // setUrlStrategy(PathUrlStrategy());
   }
@@ -54,6 +64,7 @@ void main() async {
   initializeFirebase();
   initializeWebView();
   initializeRoutes();
+  initializeData();
   runApp(const MyApp());
 }
 

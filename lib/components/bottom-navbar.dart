@@ -71,6 +71,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           GestureDetector(
             onTap: () {
               logEvent(eventName: "Settings");
+              goTo(ctx: context, pathname: RouteNames.test.name);
             },
             child: const Icon(
               Icons.settings
