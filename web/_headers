@@ -1,0 +1,13 @@
+/*
+
+  Content-Security-Policy: 
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.hs-scripts.com https://js-na1.hs-scripts.com https://js-na2.hs-scripts.com https://js.hs-banner.com; 
+    connect-src *; 
+    img-src * data:; 
+    frame-src *; 
+    style-src 'self' 'unsafe-inline';
+  
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
