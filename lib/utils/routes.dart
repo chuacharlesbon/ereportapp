@@ -1,6 +1,7 @@
 import 'package:ereportapp/pages/home.dart';
 import 'package:ereportapp/pages/iframe-chat.dart';
 import 'package:ereportapp/pages/mobile-chat.dart';
+import 'package:ereportapp/pages/report.dart';
 import 'package:ereportapp/pages/splash.dart';
 import 'package:ereportapp/pages/test.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,16 @@ class MyRoutes {
           name: RouteNames.iframeChat.name,
           builder: (context, state) => const SafeArea(
             child: Scaffold(body: IFrameChatScreen()),
+          ),
+        ),
+        /////////////////////////////////
+        /// REPORT ROUTE              ///
+        /////////////////////////////////
+        GoRoute(
+          path: RouteNames.reportSuccess.path,
+          name: RouteNames.reportSuccess.name,
+          builder: (context, state) => const SafeArea(
+            child: Scaffold(body: ReportSuccessScreen()),
           ),
         ),
       ]
@@ -98,6 +109,13 @@ class RouteNames {
   static MyRouteModel iframeChat = MyRouteModel(
     name: "iframe-chat",
     path: "/iframe-chat",
+  );
+  /////////////////////////////////
+  /// REPORT ROUTE                ///
+  /////////////////////////////////
+  static MyRouteModel reportSuccess = MyRouteModel(
+    name: "report-success",
+    path: "/report-success",
   );
   /////////////////////////////////
   /// TEST ROUTE                ///

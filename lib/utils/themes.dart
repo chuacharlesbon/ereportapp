@@ -21,8 +21,8 @@ class MyTheme {
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.blueGrey),
           ),
-          hintStyle: const TextStyle(
-            fontFamily: 'Poppins',
+          hintStyle: TextStyle(
+            fontFamily: GoogleFonts.workSans().fontFamily,
             fontWeight: FontWeight.normal,
           ),
           border: OutlineInputBorder(
